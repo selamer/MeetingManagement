@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Book>
+@{
+    ViewData["Title"] = @ViewData["Title"];
+}
+
+<!-- Breadcrumb -->
+<div class="container">
+    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+        <a asp-action="Index" asp-controller="Building" class="stext-109 cl8 hov-cl1 trans-04">
+            @localizer["Home"]
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
+        @foreach (var item in ViewBag.ConferenceRoom)
+        {
+            <span class="stext-109">
+                @item.Name
+            </span>
+        }
+    </div>
+</div>
+
+@foreach (var item in ViewBag.ConferenceRoom)
+{
+    <h4 class="ltext-106 txt-center">
+        @localizer["Reservation List"] : @item.Name
+    </h4>
+}
+
+<!-- Room Details -->
+<div class="bg0 p-t-75 p-b-85">
+    <div class="container">
+        <div class="row" styleReservation List="margin-right: -80px; margin-left: -80px;">
+            <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+                <div class="m-l-25 m-r--100 m-lr-0-xl">
+                    <div class="wrap-table-shopping-cart">
+                        <table class="table-shopping-cart">
+                            <tr class="table_head">
+                                <th rowspan="2"> @localizer["Date"] </th>
+                                <th rowspan="2"> @localizer["Start Time"] </th>
+                                <th rowspan="2"> @localizer["End Time"] </th>
+                                <th colspan="2"> @localizer["Number Of Visitors"] </th>
+                                <th rowspan="2"> @localizer["Book Status"] </th>
+                                <th rowspan="2"> @localizer["Book Via"] </th>
+                            </tr>
+                            <tr class="table_head">
+                                <th> @localizer["Internal Visitors"] </th>
+                                <th> @localizer["External Visitors"] </th>
+                            </tr>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="table_row">
+                                    <td> @item.Date.ToString("dd-MM-yyyy ddd") </td>
+                                    <td> @item.StartTime.ToString("hh:mm tt") </td>
+                                    <td> @item.EndTime.ToString("hh:mm tt") </td>
+                                    <td class="text-success"> @item.InternalVisitor </td>
+                                    <td class="text-danger"> @item.ExternalVisitor </td>
+                                    <td> @item.BookStatus </td>
+                                    <td> @item.User.UserName </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                    <div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+                        <div class="flex-w flex-m m-r-20 m-tb-5"></div>
+                        @foreach (var item in @ViewBag.ConferenceRoom)
+                        {
+                            <a asp-action="BookRoom" asp-route-id="@item.ConferenceRoom_ID" class="flex-c-m stext-101 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">
+                                @localizer["Book A Meeting"]
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-10 col-lg-7 col-xl-5 m-lr-auto m-b-50">
+                <div class="bor10 p-lr-40 p-t-30 p-b-40 m-l-150 m-r-10 m-lr-0-xl p-lr-15-sm">
+                    <div class="mtext-109 p-b-30">
+                        @foreach (var item in ViewBag.ConferenceRoom)
+                        {
+                            <span class="stext-109">
+                                @item.Name
+                                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+                            </span>
+                            <a asp-action="BookRoom" asp-route-id="@item.ConferenceRoom_ID" class="stext-109 hov-cl1 trans-04">
+                                @localizer["Book A Meeting"]
+                            </a>
+                        }
+                    </div>
+                    <div class="slick2">
+                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                            @foreach (var item in ViewBag.ConferenceRoom)
+                            {
+                                <!-- Block2 -->
+                                <div class="block2">
+                                    <div class="block2-pic hov-img0">
+                                        <img src="~/images/@item.Image" alt="IMG-PRODUCT" width="267" height="331">
+                                        <a asp-action="BookRoom" asp-route-id="@item.ConferenceRoom_ID" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                            @item.Name
+                                        </a>
+                                    </div>
+                                    <div class="block2-txt flex-w flex-t p-t-14">
+                                        <div class="block2-txt-child1 flex-col-l ">
+                                            <a asp-action="BookRoom" asp-route-id="@item.ConferenceRoom_ID" class="stext-104 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                @item.Name
+                                            </a>
+                                            <p class="stext-105">
+                                                @localizer["Capacity"] : @item.Capacity
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <p class="stext-105">
+                                @localizer["Waiting Books"] : @ViewBag.BookWiating
+                            </p>
+                            <p class="stext-105">
+                                @localizer["Accepted Books"] : @ViewBag.BookAccepted
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

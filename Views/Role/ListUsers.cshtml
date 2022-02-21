@@ -1,0 +1,48 @@
+﻿@model IEnumerable<IdentityUser>
+
+@{
+    ViewData["Title"] = @ViewData["Title"];
+    Layout = "_LayoutAdmin";
+}
+
+<h1> @localizer["All Users"]</h1>
+
+<a asp-controller="Account" asp-action="Register" class="btn btn-success" style="width:auto"> @localizer["Add New User"] </a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> @localizer["User Name"] </th>
+            <th scope="col"> @localizer["Operation"] </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var user in Model)
+            {
+                <tr>
+                    <td scope="row"> @user.UserName </td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="EditUser" asp-route-Id="@user.Id"> @localizer["Edit"] </a>
+                        <a class="btn btn-danger" asp-action="DeleteUser" asp-route-Id="@user.Id"> @localizer["Delete"] </a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <div class="card">
+                <div class="card-header">
+                    @localizer["No Users Created Yet..!"]
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @localizer["Use The Button Below To Create A User"]
+                    </h5>
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-primary" style="width:auto"> @localizer["Create User"] </a>
+                </div>
+            </div>
+        }
+    </tbody>
+</table>

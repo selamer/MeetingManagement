@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = @ViewData["Title"];
+    Layout = "_LayoutAdmin";
+}
+<h2>
+    @localizer["Super Admin Page"]
+</h2>
+<section class="d-flex flex-wrap">
+    <!--overview start-->
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="info-box blue-bg ">
+                <i class="fa fa-thumbs-o-up"></i>
+                <div class="count"> @localizer["Buildings"] </div>
+                <div class="title"> @localizer["Operations"] </div>
+                <div class="fc-content"> @localizer["You Can Show All Buildings And Can Add, Edit, Delete Building"] </div>
+            </div>
+        </div>
+        <!--/.col-->
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="info-box dark-bg">
+                <i class="fa fa-thumbs-o-up"></i>
+                <div class="count"> @localizer["Conference Rooms"] </div>
+                <div class="title"> @localizer["Operations"] </div>
+                <div class="fc-content"> @localizer["You Can Show All Conference Rooms And Can Add, Edit, Delete Rooms"] </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="info-box red-bg">
+                <i class="fa fa-thumbs-o-up"></i>
+                <div class="count"> @localizer["Roles"] </div>
+                <div class="title"> @localizer["Operations"] </div>
+                <div class="fc-content"> @localizer["You Can Show All Roles And Add Roles To Users, Edit, Get Details, Delete Role From Users"] </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="info-box twitter-bg">
+                <i class="fa fa-thumbs-o-up"></i>
+                <div class="count"> @localizer["Users"] </div>
+                <div class="title"> @localizer["Operations"] </div>
+                <div class="fc-content"> @localizer["You Can Show All Users And Add New User, Edit, Get details, Delete User"] </div>
+            </div>
+        </div>
+    </div>
+</section>

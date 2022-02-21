@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MeetingManagement.Models.Book>
+
+@{
+    ViewData["Title"] = @ViewData["Title"];
+    Layout = "_LayoutAdmin";
+}
+
+<h1> @localizer["Accepted Books"] </h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> @localizer["Created At"] </th>
+            <th scope="col"> @localizer["Date"] </th>
+            <th scope="col"> @localizer["Start Time"] </th>
+            <th scope="col"> @localizer["End Time"] </th>
+            <th scope="col"> @localizer["Number Of Visitors"] </th>
+            <th scope="col"> @localizer["Book Via"] </th>
+            <th scope="col"> @localizer["ConferenceRoom"] </th>
+            <th scope="col"> @localizer["Book Status"] </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row"> @Html.DisplayFor(modelItem => item.CreatedAt) </td>
+                <td> @Html.DisplayFor(modelItem => item.Date.ToString("dd-MM-yyyy ddd  hh:mm tt")) </td>
+                <td> @Html.DisplayFor(modelItem => item.StartTime) </td>
+                <td> @Html.DisplayFor(modelItem => item.EndTime) </td>
+                <td> @Html.DisplayFor(modelItem => item.NumOfVisitors) </td>
+                <td> @Html.DisplayFor(modelItem => item.User.UserName) </td>
+                <td> @Html.DisplayFor(modelItem => item.ConferenceRoom.Name) </td>
+                <td> @Html.DisplayFor(modelItem => item.BookStatus) </td>
+            </tr>
+        }
+    </tbody>
+</table>

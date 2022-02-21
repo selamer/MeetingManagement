@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ConferenceRoom>
+
+@{
+    ViewData["Title"] = @ViewData["Title"];
+}
+
+<!-- breadcrumb -->
+<div class="container">
+    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+        <a asp-action="Index" asp-controller="Building" class="stext-109 cl8 hov-cl1 trans-04">
+            @localizer["Home"]
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
+
+        <span class="stext-109">
+            @localizer["Conference Rooms"]
+        </span>
+    </div>
+</div>
+
+<div class="tab-content p-t-50">
+    <!-- - -->
+    <div class="tab-pane fade show active" id="best-seller" role="tabpanel">
+        <!-- Slide2 -->
+        <div class="wrap-slick2">
+            <div class="slick2">
+                @foreach (var item in Model)
+                {
+                    @if (signInManager.IsSignedIn(User) && User.IsInRole("Minister Admin"))
+                    {
+                        <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                            <div class="block2">
+                                <div class="block2-pic hov-img0">
+                                    <img src="~/images/@item.Image" alt="IMG-PRODUCT" width="267" height="331">
+                                    <a asp-action="Details" asp-route-id="@item.ConferenceRoom_ID" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                        @item.Name
+                                    </a>
+                                </div>
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <a asp-action="Details" asp-route-id="@item.ConferenceRoom_ID" class="btn cke_btn_over stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            @item.Name
+                                        </a>
+                                        <p class="stext-105">
+                                            @localizer["Capacity"] : @item.Capacity
+                                        </p>
+                                        <p class="stext-105">
+                                            @localizer["Waiting Books"] : @item.Books.Where(b => b.BookStatus == BookStatus.Waiting).Count()
+                                        </p>
+                                        <p class="stext-105">
+                                            @localizer["Accepted Books"] : @item.Books.Where(b => b.BookStatus == BookStatus.Accepted).Count()
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        if (item.ConferenceRoom_ID != 4)
+                        {
+                            <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                                <div class="block2-pic hov-img0">
+                                    <img src="~/images/@item.Image" alt="IMG-PRODUCT" width="267" height="331">
+                                    <a asp-action="Details" asp-route-id="@item.ConferenceRoom_ID" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                        @item.Name
+                                    </a>
+                                </div>
+                                <div class="block2-txt flex-w flex-t p-t-14">
+                                    <div class="block2-txt-child1 flex-col-l ">
+                                        <a asp-action="Details" asp-route-id="@item.ConferenceRoom_ID" class="btn cke_btn_over stext-104 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                            @item.Name
+                                        </a>
+                                        <p class="stext-105">
+                                            @localizer["Capacity"] : @item.Capacity
+                                        </p>
+                                        <p class="stext-105">
+                                            @localizer["Waiting Books"] : @item.Books.Where(b => b.BookStatus == BookStatus.Waiting).Count()
+                                        </p>
+                                        <p class="stext-105">
+                                            @localizer["Accepted Books"] : @item.Books.Where(b => b.BookStatus == BookStatus.Accepted).Count()
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

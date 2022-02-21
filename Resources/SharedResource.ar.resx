@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About" xml:space="preserve">
+    <value>عن</value>
+  </data>
+  <data name="Accept" xml:space="preserve">
+    <value>قبول</value>
+  </data>
+  <data name="Accepted Books" xml:space="preserve">
+    <value>حجوزات تم قبولها</value>
+  </data>
+  <data name="Access Denied" xml:space="preserve">
+    <value>تم رفض الوصول</value>
+  </data>
+  <data name="Add Building" xml:space="preserve">
+    <value>إضافة مبني</value>
+  </data>
+  <data name="Add New Role" xml:space="preserve">
+    <value>إضافة صلاحيه جديده</value>
+  </data>
+  <data name="Add New User" xml:space="preserve">
+    <value>إضافة مستخدم جديد</value>
+  </data>
+  <data name="Add or Remove Users" xml:space="preserve">
+    <value>إضافة أو حذف مستخدمين</value>
+  </data>
+  <data name="Add Or Remove Users From This Role" xml:space="preserve">
+    <value>إضافة أوحذف مستخدمين من هذه الصلاحيه</value>
+  </data>
+  <data name="Add Room" xml:space="preserve">
+    <value>إضافة قاعه</value>
+  </data>
+  <data name="Additional Services" xml:space="preserve">
+    <value>الخدمات المضافه</value>
+  </data>
+  <data name="Additions" xml:space="preserve">
+    <value>الإحتياجات</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>أدمن</value>
+  </data>
+  <data name="Admin Page" xml:space="preserve">
+    <value>صفحة الأدمن</value>
+  </data>
+  <data name="All Buildings" xml:space="preserve">
+    <value>كل المباني</value>
+  </data>
+  <data name="All Rooms" xml:space="preserve">
+    <value>كل القاعات</value>
+  </data>
+  <data name="All Users" xml:space="preserve">
+    <value>كل المستخدمين</value>
+  </data>
+  <data name="Any questions? Let us know Call us on" xml:space="preserve">
+    <value>أى سؤال ؟ أخبرنا و أتصل بنا علي</value>
+  </data>
+  <data name="Attendence People With Special Needs ..!" xml:space="preserve">
+    <value>Attendence People With Special Needs ..!</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>عوده</value>
+  </data>
+  <data name="Back To Roles" xml:space="preserve">
+    <value>العوده للقائمة</value>
+  </data>
+  <data name="Back To Users" xml:space="preserve">
+    <value>العوده للقائمة</value>
+  </data>
+  <data name="Book A Meeting" xml:space="preserve">
+    <value>حجز إجتماع</value>
+  </data>
+  <data name="Book Conference Room" xml:space="preserve">
+    <value>حجز قاعة مؤتمرات</value>
+  </data>
+  <data name="Book Room" xml:space="preserve">
+    <value>حجز قاعه</value>
+  </data>
+  <data name="Book Status" xml:space="preserve">
+    <value>حالة الحجز</value>
+  </data>
+  <data name="Book Via" xml:space="preserve">
+    <value>حجز عن طريق</value>
+  </data>
+  <data name="Building" xml:space="preserve">
+    <value>مبني</value>
+  </data>
+  <data name="Building Name" xml:space="preserve">
+    <value>اسم المبني</value>
+  </data>
+  <data name="Building No. 1, Killo 28, Cairo-Alexandria Desert Road, Smart Village" xml:space="preserve">
+    <value>مبني رقم 1, الكيلو 28 القاهره إسكندريه الصحراوي, القريه الذكيه</value>
+  </data>
+  <data name="Building Photo" xml:space="preserve">
+    <value>صورة المبني</value>
+  </data>
+  <data name="Buildings" xml:space="preserve">
+    <value>المباني</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>سعة القاعه</value>
+  </data>
+  <data name="Choose Time" xml:space="preserve">
+    <value>أختر الوقت</value>
+  </data>
+  <data name="Conference Room" xml:space="preserve">
+    <value>قاعه</value>
+  </data>
+  <data name="Conference Room Name" xml:space="preserve">
+    <value>اسم غرفة المؤتمرات</value>
+  </data>
+  <data name="Conference Room Photo" xml:space="preserve">
+    <value>صورة غرة المؤتمرات</value>
+  </data>
+  <data name="Conference Rooms" xml:space="preserve">
+    <value>قاعات المؤتمرات</value>
+  </data>
+  <data name="Confirm Password" xml:space="preserve">
+    <value>تأكيد الرقم السري</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>تواصل</value>
+  </data>
+  <data name="Contact Us" xml:space="preserve">
+    <value>تواصل معنا</value>
+  </data>
+  <data name="Create Building" xml:space="preserve">
+    <value>إضافة مبني</value>
+  </data>
+  <data name="Create Conference Room" xml:space="preserve">
+    <value>إضافة قاعه</value>
+  </data>
+  <data name="Create Role" xml:space="preserve">
+    <value>إضافة صلاحيه</value>
+  </data>
+  <data name="Create Room" xml:space="preserve">
+    <value>إضافة قاعه</value>
+  </data>
+  <data name="Create User" xml:space="preserve">
+    <value>إضافة مستخدم</value>
+  </data>
+  <data name="Created At" xml:space="preserve">
+    <value>وقت إنشاء الحجز</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>قائمة الإختيارات</value>
+  </data>
+  <data name="Data InValid..!" xml:space="preserve">
+    <value>بيانات غير صحيحه..!</value>
+  </data>
+  <data name="Data Of A Visitor Number" xml:space="preserve">
+    <value>بيانات زائر رقم</value>
+  </data>
+  <data name="Data Of A Visitor Number  1" xml:space="preserve">
+    <value>بيانات زائر رقم 1</value>
+  </data>
+  <data name="Data Show" xml:space="preserve">
+    <value>Data Show</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>التاريخ</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="Edit Building" xml:space="preserve">
+    <value>تعديل مبني</value>
+  </data>
+  <data name="Edit Role" xml:space="preserve">
+    <value>تعديل الصلاحيه</value>
+  </data>
+  <data name="Edit Room" xml:space="preserve">
+    <value>تعديل قاعه</value>
+  </data>
+  <data name="Edit User" xml:space="preserve">
+    <value>تعديل بيانات المستخدم</value>
+  </data>
+  <data name="Edit User In Role" xml:space="preserve">
+    <value>تعديل قائمة المستخدمين فى الصلاحيه</value>
+  </data>
+  <data name="Email Address" xml:space="preserve">
+    <value>عنوان البريد الإلكترونى</value>
+  </data>
+  <data name="Employer" xml:space="preserve">
+    <value>جهة العمل</value>
+  </data>
+  <data name="End Time" xml:space="preserve">
+    <value>نهاية الحجز</value>
+  </data>
+  <data name="External Visitors" xml:space="preserve">
+    <value>عدد الحضور من خارج الوزاره</value>
+  </data>
+  <data name="GET IN TOUCH" xml:space="preserve">
+    <value>إبقى على إتصال</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>مساعده</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الرئيسيه</value>
+  </data>
+  <data name="Image SSN" xml:space="preserve">
+    <value>صورة البطاقه الشخصيه</value>
+  </data>
+  <data name="Image Vaccine" xml:space="preserve">
+    <value>صورة كارت تطعيم لقاح كورونا</value>
+  </data>
+  <data name="Incorrect Username or Password" xml:space="preserve">
+    <value>اسم المستخدم أو كلمة المرور غير صحيحه</value>
+  </data>
+  <data name="Internal Visitors" xml:space="preserve">
+    <value>عدد الحضور من داخل الوزاره</value>
+  </data>
+  <data name="InValid Login Attempt..!" xml:space="preserve">
+    <value>محاولة تسجيل دخول غير صحيحه..!</value>
+  </data>
+  <data name="Job Title" xml:space="preserve">
+    <value>المسمي الوظيفي</value>
+  </data>
+  <data name="Laptop" xml:space="preserve">
+    <value>Laptop</value>
+  </data>
+  <data name="Lets Talk" xml:space="preserve">
+    <value>تواصل معنا على</value>
+  </data>
+  <data name="List Users" xml:space="preserve">
+    <value>قائمة المستخدمين</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>العنوان</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>تسجيل دخول</value>
+  </data>
+  <data name="Login Page" xml:space="preserve">
+    <value>صفحة تسجيل الدخول</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>تسجيل خروج</value>
+  </data>
+  <data name="Manage Role" xml:space="preserve">
+    <value>إعطاء صلاحيه</value>
+  </data>
+  <data name="Nationality" xml:space="preserve">
+    <value>الجنسيه</value>
+  </data>
+  <data name="News letter" xml:space="preserve">
+    <value>رساله إخباريه</value>
+  </data>
+  <data name="No Role Created Yet..!" xml:space="preserve">
+    <value>لا توجد صلاحيات حتى الآن..!</value>
+  </data>
+  <data name="No Users Created Yet..!" xml:space="preserve">
+    <value>لم يتم إنشاء مستخدمين حتى الآن ..!</value>
+  </data>
+  <data name="None At The Moment ..!" xml:space="preserve">
+    <value>لا شيء في الوقت الحالي ..!</value>
+  </data>
+  <data name="Not Found" xml:space="preserve">
+    <value>لا يوجد</value>
+  </data>
+  <data name="Number Of External Visitors" xml:space="preserve">
+    <value>عدد الحضور من خارج الوزاره</value>
+  </data>
+  <data name="Number Of Visitors" xml:space="preserve">
+    <value>عدد الحضور</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>العمليه</value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>المهام</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمة السر</value>
+  </data>
+  <data name="Phone Number" xml:space="preserve">
+    <value>رقم التليفون</value>
+  </data>
+  <data name="Privacy Policy" xml:space="preserve">
+    <value>سياسة الخصوصيه</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>قم بالتسجيل</value>
+  </data>
+  <data name="Reject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="Rejected Books" xml:space="preserve">
+    <value>حجوزات تم رفضها</value>
+  </data>
+  <data name="Remember Me ?" xml:space="preserve">
+    <value>تذكرني ؟</value>
+  </data>
+  <data name="Reservation Data" xml:space="preserve">
+    <value>بيانات الحجز</value>
+  </data>
+  <data name="Reservation List" xml:space="preserve">
+    <value>قائمة حجوزات قاعة</value>
+  </data>
+  <data name="Reservation Meetings" xml:space="preserve">
+    <value>حجز إجتماعات</value>
+  </data>
+  <data name="Role Name" xml:space="preserve">
+    <value>اسم الصلاحيه</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>الصلاحيات</value>
+  </data>
+  <data name="Room Details" xml:space="preserve">
+    <value>بيانات القاعه</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>القاعات</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Search ..." xml:space="preserve">
+    <value>  بحث ...  </value>
+  </data>
+  <data name="Signup" xml:space="preserve">
+    <value>قم بالتسجيل</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>تخطي</value>
+  </data>
+  <data name="SSN" xml:space="preserve">
+    <value>الرقم القومي</value>
+  </data>
+  <data name="Start Time" xml:space="preserve">
+    <value>بداية الحجز</value>
+  </data>
+  <data name="Subscribe" xml:space="preserve">
+    <value>إشترك</value>
+  </data>
+  <data name="Super" xml:space="preserve">
+    <value>سوبر</value>
+  </data>
+  <data name="Super Admin Page" xml:space="preserve">
+    <value>صفحة السوبر أدمن</value>
+  </data>
+  <data name="The Appoiment Is Booked..!!" xml:space="preserve">
+    <value>الميعاد محجوز..!!</value>
+  </data>
+  <data name="Use The Button Below To Create A Role" xml:space="preserve">
+    <value>إستخدم الزرار التالى لإنشاء صلاحيه</value>
+  </data>
+  <data name="Use the button below to create a User" xml:space="preserve">
+    <value>إستخدم الزرار التالي لإنشاء مستخدم</value>
+  </data>
+  <data name="Use this page to detail your site's privacy policy." xml:space="preserve">
+    <value>إستخدم هذه الصفحه لتفاصيل سياسة خصوصية موقعك.</value>
+  </data>
+  <data name="User ID" xml:space="preserve">
+    <value>الرقم التعريفي للموظف</value>
+  </data>
+  <data name="User Name" xml:space="preserve">
+    <value>اسم المستخدم</value>
+  </data>
+  <data name="User Roles" xml:space="preserve">
+    <value>صلاحيات المستخدم</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>المستخدمين</value>
+  </data>
+  <data name="Vaccine" xml:space="preserve">
+    <value>رقم التسجيل الخاص بلقاح كرورونا</value>
+  </data>
+  <data name="Visitors Data" xml:space="preserve">
+    <value>تسجيل بيانات الزوار</value>
+  </data>
+  <data name="Waiting Books" xml:space="preserve">
+    <value>قائمة الإنتظار</value>
+  </data>
+  <data name="Wifi" xml:space="preserve">
+    <value>Wifi</value>
+  </data>
+  <data name="You Can Show All Accepted Reservations" xml:space="preserve">
+    <value>يمكنك أن تري جميع الحجوزات التي تم قبولها</value>
+  </data>
+  <data name="You Can Show All Buildings And Can Add, Edit, Delete Building" xml:space="preserve">
+    <value>يمكنك عرض جميع المباني ويمكنك إضافة وتعديل وحذف المبنى</value>
+  </data>
+  <data name="You Can Show All Conference Rooms And Can Add, Edit, Delete Rooms" xml:space="preserve">
+    <value>يمكنك عرض جميع غرف المؤتمرات ويمكنك إضافة وتعديل وحذف الغرف</value>
+  </data>
+  <data name="You Can Show All Rejected Reservations And You Can Delete It" xml:space="preserve">
+    <value>يمكنك أن تري جميع الحجوزات التي تم رفضها و يمكنك حذفها</value>
+  </data>
+  <data name="You Can Show All Roles And Add Roles To Users, Edit, Get Details, Delete Role From Users" xml:space="preserve">
+    <value>يمكنك عرض جميع الصلاحيات وإضافة صلاحيات للمستخدمين ، وتعديل، والحصول على تفاصيل ، وحذف الصلاحيات من المستخدمين</value>
+  </data>
+  <data name="You Can Show All Users And Add New User, Edit, Get details, Delete User" xml:space="preserve">
+    <value>يمكنك عرض جميع المستخدمين وإضافة مستخدم جديد ، وتعديل ، والحصول على التفاصيل ، وحذف المستخدم</value>
+  </data>
+  <data name="You Can Show All Waiting Reservations And Can Accept Or Reject Resrvation" xml:space="preserve">
+    <value>يمكنك أن تري جميع الحجوزات المنتظره ويمكنك قبول تلك الحجوزات أو رفضها</value>
+  </data>
+  <data name="You Don't Have Permission To Access This Page" xml:space="preserve">
+    <value>ليس لديك إذن للوصول إلى هذه الصفحه</value>
+  </data>
+</root>

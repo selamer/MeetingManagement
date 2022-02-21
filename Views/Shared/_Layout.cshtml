@@ -1,0 +1,417 @@
+﻿@using MeetingManagement.Interfaces
+@using MeetingManagement.Services
+@using Microsoft.AspNetCore.Localization
+@inject IService<Building> buildingService
+@{
+    var culture = Context.Features.Get<IRequestCultureFeature>();
+    var dir = culture.RequestCulture.UICulture.TextInfo.IsRightToLeft ? "rtl" : "ltr";
+    var twoLetter = culture.RequestCulture.UICulture.TwoLetterISOLanguageName;
+}
+
+<!DOCTYPE html>
+<html lang="@twoLetter" dir="@dir">
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/images/icons/favicon.png" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/linearicons-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/MagnificPopup/magnific-popup.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <link href="~/css/PagedList.css" rel="stylesheet" />
+    <!--===============================================================================================-->
+    @if (dir == "rtl")
+    {
+        <link href="~/lib/bootstrap-rtl/css/bootstrap-rtl.css" rel="stylesheet" />
+    }
+</head>
+<body class="animsition">
+    <!-- Header -->
+    <header class="header-v2">
+        <!-- Header desktop -->
+        <div class="container-menu-desktop trans-03">
+            <!-- Topbar -->
+            <div class="top-bar">
+                <div class="content-topbar flex-sb-m h-full container">
+                    <div class="left-top-bar" style="color:white">
+                        @localizer["Reservation Meetings"]
+                    </div>
+                    <div class="right-top-bar flex-w h-full">
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <a class="flex-c-m trans-04 p-lr-25" style="color:white">
+                                @User.Identity.Name
+                            </a>
+                            <a asp-action="Logout" asp-controller="Account" class="flex-c-m trans-04 p-lr-25" style="color:white">@localizer["Logout"]</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Login" asp-controller="Account" class="flex-c-m trans-04 p-lr-25" style="color:white">@localizer["Login"]</a>
+                            <a asp-action="Register" asp-controller="Account" class="flex-c-m trans-04 p-lr-25" style="color:white">@localizer["Register"]</a>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrap-menu-desktop">
+                <nav class="limiter-menu-desktop p-l-45">
+                    <!-- Menu desktop -->
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li>
+                                <a asp-action="Index" asp-controller="Building">@localizer["Buildings"]</a>
+                            </li>
+                            <li>
+                                <a asp-action="About" asp-controller="Home">@localizer["About"]</a>
+                            </li>
+                            <li>
+                                <a asp-action="Contact" asp-controller="Home">@localizer["Contact"]</a>
+                            </li>
+                            @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                            {
+                                <li>
+                                    <a asp-action="Index" asp-controller="Admin">@localizer["Admin"]</a>
+                                </li>
+                            }
+                            @if (signInManager.IsSignedIn(User) && User.IsInRole("Super Admin"))
+                            {
+                                <li>
+                                    <a asp-action="Index" asp-controller="SuperAdmin">@localizer["Admin"]</a>
+                                </li>
+                            }
+                            <partial name="_Localization" />
+                        </ul>
+                    </div>
+                    <!-- Icon header -->
+                    <div class="wrap-icon-header flex-w flex-r-m h-full">
+                        <div class="flex-c-m h-full p-r-24">
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+                                <i class="zmdi zmdi-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Header Mobile -->
+        <div class="wrap-header-mobile">
+            <!-- Logo moblie -->
+            <div class="logo-mobile">
+                <a asp-action="Index" asp-controller="Building"></a>
+            </div>
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+                <div class="flex-c-m h-full p-r-10">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+                        <i class="zmdi zmdi-search"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- Button show menu -->
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
+        <!-- Menu Mobile -->
+        <div class="menu-mobile">
+            <!-- Topbar -->
+            <ul class="topbar-mobile">
+                <li>
+                    <div class="left-top-bar" style="color:white">
+                        @localizer["Reservation Meetings"]
+                    </div>
+                </li>
+                <li>
+                    <div class="right-top-bar flex-w h-full">
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <a class="flex-c-m trans-04 p-lr-25" style="color:white">
+                                @User.Identity.Name
+                            </a>
+                            <a asp-action="Logout" asp-controller="Account" class="flex-c-m trans-04 p-lr-25" style="color:white">@localizer["Logout"]</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Login" asp-controller="Account" class="flex-c-m trans-04 p-lr-25" style="color:white">@localizer["Login"]</a>
+                            <a asp-action="Register" asp-controller="Account" class="flex-c-m trans-04 p-lr-25" style="color:white">@localizer["Register"]</a>
+                        }
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="main-menu-m">
+                <li>
+                    <a asp-action="Index" asp-controller="Building">@localizer["Buildings"]</a>
+                </li>
+                <li>
+                    <a asp-action="About" asp-controller="Home">@localizer["About"]</a>
+                </li>
+                <li>
+                    <a asp-action="Contact" asp-controller="Home">Contact</a>
+                </li>
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <li>
+                        <a asp-action="Index" asp-controller="Admin">@localizer["Admin"]</a>
+                    </li>
+                }
+                @if (signInManager.IsSignedIn(User) && User.IsInRole("Super Admin"))
+                {
+                    <li>
+                        <a asp-action="Index" asp-controller="SuperAdmin">@localizer["Admin"]</a>
+                    </li>
+                }
+                <partial name="_Localization" />
+            </ul>
+        </div>
+
+        <!-- Modal Search -->
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+            <div class="container-search-header">
+                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                    <img src="~/images/icons/icon-close2.png" alt="CLOSE">
+                </button>
+
+                <form asp-action="BuildingSearch" asp-controller="Buiding" class="wrap-search-header flex-w p-l-15">
+                    <button type="submit" class="flex-c-m trans-04">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                    <input class="plh3" type="text" name="Name" placeholder="@localizer["Search"] ...">
+                </form>
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer class="bg3 p-t-75 p-b-32">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        @localizer["Buildings"]
+                    </h4>
+                    <ul>
+                        @foreach (var item in buildingService.GetAll())
+                        {
+                            <li class="p-b-10">
+                                <a asp-action="Index" asp-controller="Room" asp-route-id="@item.Building_ID" class="stext-107 cl7 hov-cl1 trans-04">
+                                    @item.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        @localizer["Help"]
+                    </h4>
+                    <ul>
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Track Order
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                Returns
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                                FAQs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        @localizer["GET IN TOUCH"]
+                    </h4>
+
+                    <p class="stext-107 cl7 size-201">
+                        @localizer["Any questions? Let us know Call us on"] (+1) 96 716 6879
+                    </p>
+                    <div class="p-t-27">
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3 p-b-50">
+                    <h4 class="stext-301 cl0 p-b-30">
+                        @localizer["News letter"]
+                    </h4>
+                    <form>
+                        <div class="wrap-input1 w-full p-b-4">
+                            <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="Email" placeholder="email@example.com">
+                            <div class="focus-input1 trans-04"></div>
+                        </div>
+
+                        <div class="p-t-18">
+                            <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+                                @localizer["Subscribe"]
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="p-t-40">
+                <div class="flex-c-m flex-w p-b-18">
+                    <a href="#" class="m-all-1">
+                        <img src="~/images/icons/icon-pay-01.png" alt="ICON-PAY">
+                    </a>
+                    <a href="#" class="m-all-1">
+                        <img src="~/images/icons/icon-pay-02.png" alt="ICON-PAY">
+                    </a>
+                    <a href="#" class="m-all-1">
+                        <img src="~/images/icons/icon-pay-03.png" alt="ICON-PAY">
+                    </a>
+                    <a href="#" class="m-all-1">
+                        <img src="~/images/icons/icon-pay-04.png" alt="ICON-PAY">
+                    </a>
+                    <a href="#" class="m-all-1">
+                        <img src="~/images/icons/icon-pay-05.png" alt="ICON-PAY">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+        <span class="symbol-btn-back-to-top">
+            <i class="zmdi zmdi-chevron-up"></i>
+        </span>
+    </div>
+
+    <!--===============================================================================================-->
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/slick/slick.min.js"></script>
+    <script src="~/js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/parallax100/parallax100.js"></script>
+    <script>
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script>
+        $('.gallery-lb').each(function () { // the containers for all your galleries
+            $(this).magnificPopup({
+                delegate: 'a', // the selector for gallery item
+                type: 'image',
+                gallery: {
+                    enabled: true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/isotope/isotope.pkgd.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/sweetalert/sweetalert.min.js"></script>
+    <script>
+        $('.js-addwish-b2').each(function () {
+            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).addClass('js-addedwish-b2');
+            });
+        });
+        $('.js-addwish-detail').each(function () {
+            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).addClass('js-addedwish-detail');
+            });
+        });
+        /*---------------------------------------------*/
+        $('.js-addcart-detail').each(function () {
+            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to cart !", "success");
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/js/main.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

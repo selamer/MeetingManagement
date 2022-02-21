@@ -1,0 +1,35 @@
+﻿@model MeetingManagement.ViewModel.LoginViewModel
+@{
+    ViewData["Title"] = @ViewData["Title"];
+    Layout = "_LayoutLogin";
+}
+
+<div class="container">
+    <form class="login-form" method="post">
+        <div class="login-wrap">
+            <p class="login-img"><i class="icon_lock_alt"></i></p>
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="icon_profile"></i></span>
+                <input asp-for="UserName" class="form-control" placeholder="@localizer["User Name"]" auto autofocusfocus>
+            </div>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                <input asp-for="Password" class="form-control" placeholder="@localizer["Password"]">
+            </div>
+            <span asp-validation-for="Password" class="text-danger"></span>
+
+            <label class="checkbox">
+                <input asp-for="RememberMe"> @localizer["Remember Me ?"]
+            </label>
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit" asp-action="Login" asp-controller="Account"> @localizer["Login"] </button>
+            <button class="btn btn-info btn-lg btn-block" type="submit" asp-action="Register" asp-controller="Account"> @localizer["Signup"] </button>
+        </div>
+    </form>
+</div>
+
+@*@Html.DisplayNameFor(m => m.RememberMe)*@

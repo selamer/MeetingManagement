@@ -1,0 +1,47 @@
+﻿@model IEnumerable<IdentityRole>
+
+@{
+    ViewData["Title"] = @ViewData["Title"];
+    Layout = "_LayoutAdmin";
+}
+<h1>All Roles</h1>
+
+<a asp-action="CreateRole" class="btn btn-success" style="width:auto"> @localizer["Add New Role"] </a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"> @localizer["Role Name"] </th>
+            <th scope="col"> @localizer["Operations"] </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            foreach (var role in Model)
+            {
+                <tr>
+                    <td scope="row"> @role.Name </td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="EditRole" asp-route-Id="@role.Id"> @localizer["Edit"] </a>
+                        <a class="btn btn-danger" asp-action="DeleteRole" asp-route-Id="@role.Id"> @localizer["Delete"] </a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <div class="card">
+                <div class="card-header">
+                    @localizer["No Role Created Yet..!"]
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @localizer["Use The Button Below To Create A Role"]
+                    </h5>
+                    <a class="btn btn-primary" style="width:auto" asp-action="CreateRole"> @localizer["Create Role"] </a>
+                </div>
+            </div>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,47 @@
+﻿@model MeetingManagement.ViewModel.BuildingViewModel
+
+@{
+    ViewData["Title"] = @ViewData["Title"];
+    Layout = "_LayoutAdmin";
+}
+
+<h1> @localizer["Edit"] </h1>
+
+<h4> @localizer["Building"] </h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditBuilding" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Building_ID" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"> @localizer["Building Name"] </label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoFile" class="control-label"> @localizer["Building Photo"] </label>
+                <input type="file" asp-for="PhotoFile" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"> @localizer["Location"] </label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"> @localizer["Save"] </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="getBuilding" class="btn btn-warning"> @localizer["Back"] </a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,52 @@
+﻿@model MeetingManagement.ViewModel.RoomViewModel
+
+@{
+    ViewData["Title"] = @ViewData["Title"];
+    Layout = "_LayoutAdmin";
+    SelectList Building = new SelectList(ViewBag.Building, "Building_ID", "Name");
+}
+<h1> @localizer["Edit"] </h1>
+<h4> @localizer["Conference Room"] </h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditRoom" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ConferenceRoom_ID" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"> @localizer["Conference Room Name"] </label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhotoFile" class="control-label"> @localizer["Conference Room Photo"] </label>
+                <input type="file" asp-for="PhotoFile" name="files" class="form-control" />
+                <span asp-validation-for="PhotoFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Capacity" class="control-label"> @localizer["Capacity"] </label>
+                <input asp-for="Capacity" class="form-control" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Building_ID" class="control-label"> @localizer["Building Name"] </label>
+                <select asp-for="Building_ID" class="form-control" asp-items="Building"></select>
+                <span asp-validation-for="Building_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary"> @localizer["Save"] </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-warning"> @localizer["Back"] </a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
